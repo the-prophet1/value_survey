@@ -15,6 +15,9 @@ func NewBalanceSheetHandler() *BalanceSheetHandler {
 type BalanceSheetCreateReq struct {
 	Ticket int // 股票号码
 	model.CurrentAsset
+	model.NonCurrentAsset
+	model.CurrentLiability
+	model.NonCurrentLiability
 }
 
 type BalanceSheetCreateResp struct {
