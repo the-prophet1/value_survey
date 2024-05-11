@@ -1,6 +1,8 @@
 package model
 
-type Int struct {
+type Int *innerInt
+
+type innerInt struct {
 	Data       int
 	Ingredient map[string]int
 }

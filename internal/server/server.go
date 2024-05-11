@@ -34,9 +34,9 @@ func (h *HttpServer) Run(address string) Error {
 type Handler[Req, Resp interface{}] func(req *Req) (*Resp, Error)
 
 type RetResult struct {
-	Result  interface{}
-	Code    int
-	Message string
+	Result  interface{} `json:"result,omitempty"`
+	Code    int         `json:"code"`
+	Message string      `json:"message"`
 }
 
 func GET[Req, Resp interface{}](server *HttpServer, path string, handler Handler[Req, Resp]) {
