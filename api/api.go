@@ -7,7 +7,7 @@ import (
 )
 
 func RegisterRouter(s *server.HttpServer) Error {
-	balanceSheetHandler := handler.NewBalanceSheetHandler()
+	balanceSheetHandler := handler.GetBalanceSheetHandler()
 	server.POST(s, "/balance_sheet", balanceSheetHandler.Create)
 
 	return nil
