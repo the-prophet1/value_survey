@@ -38,7 +38,7 @@ func (b *BalanceSheetHandler) Create(req *BalanceSheetCreateReq) (*BalanceSheetC
 	balanceSheet.NonCurrentAsset = req.NonCurrentAsset
 	balanceSheet.CurrentLiability = req.CurrentLiability
 	balanceSheet.NonCurrentLiability = req.NonCurrentLiability
-	if err := b.storage.CreateBalanceSheet(balanceSheet); err != nil {
+	if err := persistence.GetRDB().CreateBalanceSheet(balanceSheet); err != nil {
 		return nil, err
 	}
 	return &BalanceSheetCreateResp{}, nil

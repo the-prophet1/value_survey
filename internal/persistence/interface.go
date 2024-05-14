@@ -20,6 +20,11 @@ type Interface interface {
 	CreateBalanceSheet(sheet *BalanceSheet) Error
 }
 
-func InitRDB(db *gorm.DB) {
+func InitRDB(db *gorm.DB) Error {
 	rdbDefaultClient = rdbClient{db: db}
+	return nil
+}
+
+func GetRDB() Interface {
+	return &rdbDefaultClient
 }

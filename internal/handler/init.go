@@ -9,11 +9,6 @@ var (
 )
 
 func InitHandler() Error {
-	if err != nil {
-		return err
-	}
-
 	balanceSheetHandler = newBalanceSheetHandler()
-
 	return nil
 }
