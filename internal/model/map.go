@@ -21,5 +21,8 @@ func (m SIMap) Scan(value interface{}) error {
 }
 
 func (m SIMap) Value() (driver.Value, error) {
+	if m == nil {
+		return []byte{}, nil
+	}
 	return json.Marshal(m)
 }

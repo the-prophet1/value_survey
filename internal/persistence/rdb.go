@@ -5,10 +5,6 @@ import (
 	. "value-survey/pkg/errors"
 )
 
-const (
-	codeOpenSQLiteErr = iota + 20000
-)
-
 var rdbDefaultClient rdbClient
 
 type rdbClient struct {
@@ -16,6 +12,12 @@ type rdbClient struct {
 }
 
 func (s *rdbClient) CreateBalanceSheet(sheet *BalanceSheet) Error {
-
+	sheet.CurrentAsset.GenerateID()
+	sheet.NonCurrentAsset.GenerateID()
+	sheet.CurrentLiability.GenerateID()
+	sheet.NonCurrentLiability.GenerateID()
+	if err := s.db.Model(&BalanceSheet{}).Create(sheet).Error; err != nil {
+		return NewWithError(codeCreateError, err)
+	}
 	return nil
 }

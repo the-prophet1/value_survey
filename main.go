@@ -7,6 +7,7 @@ import (
 	"value-survey/internal/handler"
 	"value-survey/internal/persistence"
 	"value-survey/internal/server"
+	"value-survey/pkg/idgenerate"
 	"value-survey/pkg/storage"
 )
 
@@ -21,6 +22,10 @@ func main() {
 	}
 
 	s := server.NewHttpServer()
+
+	if err := idgenerate.Init(); err != nil {
+		log.Fatal(err)
+	}
 
 	if err := storage.InitDefault(config.GetConfig().Persistence); err != nil {
 		log.Fatal(err)

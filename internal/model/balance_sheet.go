@@ -1,5 +1,7 @@
 package model
 
+import "value-survey/pkg/idgenerate"
+
 type CurrentAsset struct {
 	Cash                 Int   `json:"cash" gorm:"column:cash;bigint;comment:现金"`
 	ShortInvestment      Int   `json:"short_investment" gorm:"column:short_investment;bigint;comment:短期投资"`
@@ -13,6 +15,42 @@ type CurrentAsset struct {
 	ShortNonCurrentAsset Int   `json:"short_non_current_asset" gorm:"column:short_non_current_asset;bigint;comment:一年内到期的非流动资产"`
 	OtherCurrentAsset    Int   `json:"other_current_asset" gorm:"column:other_current_asset;bigint;comment:其他流动资产"`
 	ExtraCurrentAsset    SIMap `json:"extra_current_asset" gorm:"column:extra_current_asset;charset(2048);comment:额外的流动资产"`
+}
+
+func (currentAsset *CurrentAsset) GenerateID() {
+	if currentAsset.Cash != nil {
+		currentAsset.Cash.ID = idgenerate.Generate()
+	}
+	if currentAsset.ShortInvestment != nil {
+		currentAsset.ShortInvestment.ID = idgenerate.Generate()
+	}
+	if currentAsset.ReceivableBill != nil {
+		currentAsset.ReceivableBill.ID = idgenerate.Generate()
+	}
+	if currentAsset.ReceivableCash != nil {
+		currentAsset.ReceivableCash.ID = idgenerate.Generate()
+	}
+	if currentAsset.ReceivableFinancing != nil {
+		currentAsset.ReceivableFinancing.ID = idgenerate.Generate()
+	}
+	if currentAsset.PrepayCash != nil {
+		currentAsset.PrepayCash.ID = idgenerate.Generate()
+	}
+	if currentAsset.Stock != nil {
+		currentAsset.Stock.ID = idgenerate.Generate()
+	}
+	if currentAsset.ContractAsset != nil {
+		currentAsset.ContractAsset.ID = idgenerate.Generate()
+	}
+	if currentAsset.OtherReceivableCash != nil {
+		currentAsset.OtherReceivableCash.ID = idgenerate.Generate()
+	}
+	if currentAsset.ShortNonCurrentAsset != nil {
+		currentAsset.ShortNonCurrentAsset.ID = idgenerate.Generate()
+	}
+	if currentAsset.OtherCurrentAsset != nil {
+		currentAsset.OtherCurrentAsset.ID = idgenerate.Generate()
+	}
 }
 
 type NonCurrentAsset struct {
@@ -35,6 +73,58 @@ type NonCurrentAsset struct {
 	ExtraNonCurrentAsset   SIMap `json:"extra_non_current_asset" gorm:"column:extra_non_current_asset;charset(2048);comment:额外的非流动资产"`
 }
 
+func (n *NonCurrentAsset) GenerateID() {
+	if n.Grant != nil {
+		n.Grant.ID = idgenerate.Generate()
+	}
+	if n.DebtInvestment != nil {
+		n.DebtInvestment.ID = idgenerate.Generate()
+	}
+	if n.OtherDebtInvestment != nil {
+		n.OtherDebtInvestment.ID = idgenerate.Generate()
+	}
+	if n.LongReceivableCash != nil {
+		n.LongReceivableCash.ID = idgenerate.Generate()
+	}
+	if n.LongStock != nil {
+		n.LongStock.ID = idgenerate.Generate()
+	}
+	if n.OtherEquity != nil {
+		n.OtherEquity.ID = idgenerate.Generate()
+	}
+	if n.OtherNonCurrentFinance != nil {
+		n.OtherNonCurrentFinance.ID = idgenerate.Generate()
+	}
+	if n.Estate != nil {
+		n.Estate.ID = idgenerate.Generate()
+	}
+	if n.FixedAsset != nil {
+		n.FixedAsset.ID = idgenerate.Generate()
+	}
+	if n.ProgressConstruction != nil {
+		n.ProgressConstruction.ID = idgenerate.Generate()
+	}
+	if n.UseRight != nil {
+		n.UseRight.ID = idgenerate.Generate()
+	}
+	if n.IntangibleAsset != nil {
+		n.IntangibleAsset.ID = idgenerate.Generate()
+	}
+	if n.Goodwill != nil {
+		n.Goodwill.ID = idgenerate.Generate()
+	}
+	if n.LongExpense != nil {
+		n.LongExpense.ID = idgenerate.Generate()
+	}
+	if n.DeferredTax != nil {
+		n.DeferredTax.ID = idgenerate.Generate()
+	}
+	if n.OtherNonCurrentAsset != nil {
+		n.OtherNonCurrentAsset.ID = idgenerate.Generate()
+	}
+
+}
+
 type CurrentLiability struct {
 	ShortLoan                    Int   `json:"short_loan" gorm:"column:short_loan;bigint;comment:短期借款"`
 	Deposit                      Int   `json:"deposit" gorm:"column:deposit;bigint;comment:吸收存款及同行存放"`
@@ -51,6 +141,45 @@ type CurrentLiability struct {
 	ExtraCurrentLiability        SIMap `json:"extra_current_liability" gorm:"column:extra_current_liability;charset(2048);comment:额外的流动负债"`
 }
 
+func (n *CurrentLiability) GenerateID() {
+	if n.ShortLoan != nil {
+		n.ShortLoan.ID = idgenerate.Generate()
+	}
+	if n.Deposit != nil {
+		n.Deposit.ID = idgenerate.Generate()
+	}
+	if n.BorrowedFund != nil {
+		n.BorrowedFund.ID = idgenerate.Generate()
+	}
+	if n.DerivativeFinancialLiability != nil {
+		n.DerivativeFinancialLiability.ID = idgenerate.Generate()
+	}
+	if n.PayableBill != nil {
+		n.PayableBill.ID = idgenerate.Generate()
+	}
+	if n.PayableCash != nil {
+		n.PayableCash.ID = idgenerate.Generate()
+	}
+	if n.AdvancesReceived != nil {
+		n.AdvancesReceived.ID = idgenerate.Generate()
+	}
+	if n.ContractualLiability != nil {
+		n.ContractualLiability.ID = idgenerate.Generate()
+	}
+	if n.EmployeeCompensation != nil {
+		n.EmployeeCompensation.ID = idgenerate.Generate()
+	}
+	if n.Taxes != nil {
+		n.Taxes.ID = idgenerate.Generate()
+	}
+	if n.NonCurrentLiability != nil {
+		n.NonCurrentLiability.ID = idgenerate.Generate()
+	}
+	if n.OtherCurrentLiability != nil {
+		n.OtherCurrentLiability.ID = idgenerate.Generate()
+	}
+}
+
 type NonCurrentLiability struct {
 	LongLoan                 Int   `json:"long_loan" gorm:"column:long_loan;bigint;comment:长期借款"`
 	LeaseLiability           Int   `json:"lease_liability" gorm:"column:lease_liability;bigint;comment:租赁负债"`
@@ -59,4 +188,25 @@ type NonCurrentLiability struct {
 	DeferredRevenue          Int   `json:"deferred_revenue" gorm:"column:deferred_revenue;bigint;comment:延递收益"`
 	DeferredTaxLiabilities   Int   `json:"deferred_tax_liabilities" gorm:"column:deferred_tax_liabilities;bigint;comment:递延所得税负债"`
 	ExtraNonCurrentLiability SIMap `json:"extra_non_current_liability" gorm:"column:extra_non_current_liability;charset(2048);comment:额外的非流动负债"`
+}
+
+func (n *NonCurrentLiability) GenerateID() {
+	if n.LongLoan != nil {
+		n.LongLoan.ID = idgenerate.Generate()
+	}
+	if n.LeaseLiability != nil {
+		n.LeaseLiability.ID = idgenerate.Generate()
+	}
+	if n.LongPayable != nil {
+		n.LongPayable.ID = idgenerate.Generate()
+	}
+	if n.LongEmployeeCompensation != nil {
+		n.LongEmployeeCompensation.ID = idgenerate.Generate()
+	}
+	if n.DeferredRevenue != nil {
+		n.DeferredRevenue.ID = idgenerate.Generate()
+	}
+	if n.DeferredTaxLiabilities != nil {
+		n.DeferredTaxLiabilities.ID = idgenerate.Generate()
+	}
 }

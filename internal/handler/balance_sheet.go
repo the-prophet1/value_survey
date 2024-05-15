@@ -18,12 +18,12 @@ func GetBalanceSheetHandler() *BalanceSheetHandler {
 }
 
 type BalanceSheetCreateReq struct {
-	Ticket int // 股票号码
-	Name   string
-	model.CurrentAsset
-	model.NonCurrentAsset
-	model.CurrentLiability
-	model.NonCurrentLiability
+	Ticket                    int    `json:"ticket"` // 股票号码
+	Name                      string `json:"name"`
+	model.CurrentAsset        `json:",inline"`
+	model.NonCurrentAsset     `json:",inline"`
+	model.CurrentLiability    `json:",inline"`
+	model.NonCurrentLiability `json:",inline"`
 }
 
 type BalanceSheetCreateResp struct {
@@ -34,7 +34,7 @@ func (b *BalanceSheetHandler) Create(req *BalanceSheetCreateReq) (*BalanceSheetC
 		Ticket: req.Ticket,
 		Name:   req.Name,
 	}
-	balanceSheet.ContractAsset = req.ContractAsset
+	balanceSheet.CurrentAsset = req.CurrentAsset
 	balanceSheet.NonCurrentAsset = req.NonCurrentAsset
 	balanceSheet.CurrentLiability = req.CurrentLiability
 	balanceSheet.NonCurrentLiability = req.NonCurrentLiability
